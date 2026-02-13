@@ -1,20 +1,19 @@
-# Autonomous Financial Underwriting & Loan Orchestration Agent
+# Enterprise Loan Orchestration Engine (built with Parlant) 
 
-A high-reliability, state-based AI agent engineered for deterministic financial workflows. This system automates the end-to-end loan approval lifecycle while maintaining strict compliance with regulatory constraints.
+A production-ready, compliance-driven AI agent designed for the financial services sector. This system manages complex loan application lifecycles using a **State-Based Conversational Journey**.
 
-## Architectural Overview
-Unlike standard LLM implementations, this system utilizes a **Finite State Machine (FSM)** architecture to ensure conversational integrity and deterministic logic—critical for regulated financial environments.
+## Core Engineering Principles
+* **Deterministic Guardrails:** Leverages the Parlant framework to enforce strict adherence to financial regulations, preventing non-compliant advice.
+* **Tool-Augmented Generation (TAG):** Integrated custom Python tools for real-time logic:
+    * `check_eligibility`: Algorithmic credit scoring and income-to-debt ratio validation.
+    * `process_documents`: Automated validation logic for tax and payroll data.
+    * `get_current_rates`: Dynamic spatial fetching of interest rates.
+* **State Management:** Maps the user journey from initial inquiry through document collection to final approval.
 
-* **State-Driven Dialogue:** Implements a structured transition matrix to guide users through eligibility, verification, and approval phases.
-* **Compliance-First Design:** Engineered to eliminate "hallucinations" by enforcing rule-based response boundaries.
-* **Automated Underwriting Logic:** Integrates business rules and eligibility checks directly into the conversational flow.
+## Technical Stack
+* **Framework:** Parlant (Behavioral AI Orchestration)
+* **Environment:** Python 3.12 managed with `uv` for high-performance dependency resolution.
+* **Interface:** RESTful API integration with local server deployment.
 
-## Engineering Stack
-* **Core Logic:** Python 3.12+ 
-* **Workflow Management:** Structured state-transition logic for multi-step journey mapping.
-* **Dependency Management:** Optimized using `uv` for lightning-fast environment resolution and reproducible builds.
-
-## Key Features
-* **Eligibility Engine:** Real-time evaluation of user input against pre-defined financial constraints.
-* **Secure Document Ingestion Path:** Designed to handle sensitive user data through controlled state transitions.
-* **Regulated Interaction Model:** Avoids advisory bias by sticking to a predefined compliance-checked dialogue graph.
+## Architectural Impact
+This project demonstrates how to bridge the gap between "Stochastic LLMs" and "Deterministic Business Rules," providing a safe, scalable solution for regulated industries.
