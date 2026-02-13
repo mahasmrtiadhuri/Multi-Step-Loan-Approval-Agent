@@ -1,23 +1,20 @@
-# Multi-Step-Loan-Approval Agent
+# Autonomous Financial Underwriting & Loan Orchestration Agent 🏦
 
-A compliance-driven conversational AI agent that guides users through a structured loan approval process. The system is designed for financial services use cases where deterministic behavior, controlled dialogue flow, and compliance constraints are required.
+A high-reliability, state-based AI agent engineered for deterministic financial workflows. This system automates the end-to-end loan approval lifecycle while maintaining strict compliance with regulatory constraints.
 
-## What This Project Does
+## 🏗️ Architectural Overview
+Unlike standard LLM implementations, this system utilizes a **Finite State Machine (FSM)** architecture to ensure conversational integrity and deterministic logic—critical for regulated financial environments.
 
-This project implements a loan approval chatbot that helps customers move through a step-by-step loan application journey. The agent handles eligibility checks, document collection, loan type selection, and approval-related interactions using a predefined, rule-based conversational flow.
+* **State-Driven Dialogue:** Implements a structured transition matrix to guide users through eligibility, verification, and approval phases.
+* **Compliance-First Design:** Engineered to eliminate "hallucinations" by enforcing rule-based response boundaries.
+* **Automated Underwriting Logic:** Integrates business rules and eligibility checks directly into the conversational flow.
 
-Unlike open-ended chatbots, this agent follows a controlled state-based journey to ensure consistent and compliant responses suitable for regulated financial environments.
+## 🛠️ Engineering Stack
+* **Core Logic:** Python 3.12+ 
+* **Workflow Management:** Structured state-transition logic for multi-step journey mapping.
+* **Dependency Management:** Optimized using `uv` for lightning-fast environment resolution and reproducible builds.
 
-## How It Works
-
-- The conversational flow is defined as a series of states and transitions
-- User inputs are evaluated at each step to determine the next action
-- Business rules and compliance constraints guide responses
-- The agent avoids speculative or advisory language outside defined rules
-- The application runs locally and exposes a conversational interface
-
-## Requirements
-
-- Python 3.12 or later
-- `uv` package manager
-- Environment variables configured via `.env`
+## 🚀 Key Features
+* **Eligibility Engine:** Real-time evaluation of user input against pre-defined financial constraints.
+* **Secure Document Ingestion Path:** Designed to handle sensitive user data through controlled state transitions.
+* **Regulated Interaction Model:** Avoids advisory bias by sticking to a predefined compliance-checked dialogue graph.
