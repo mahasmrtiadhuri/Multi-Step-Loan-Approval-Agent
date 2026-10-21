@@ -1,19 +1,53 @@
-# Enterprise Loan Orchestration Engine (built with Parlant) 
+# Loan Journey Orchestration
 
-A production-ready, compliance-driven AI agent designed for the financial services sector. This system manages complex loan application lifecycles using a **State-Based Conversational Journey**.
+### A state-based conversation workflow built with Parlant.
 
-## Core Engineering Principles
-* **Deterministic Guardrails:** Leverages the Parlant framework to enforce strict adherence to financial regulations, preventing non-compliant advice.
-* **Tool-Augmented Generation (TAG):** Integrated custom Python tools for real-time logic:
-    * `check_eligibility`: Algorithmic credit scoring and income-to-debt ratio validation.
-    * `process_documents`: Automated validation logic for tax and payroll data.
-    * `get_current_rates`: Dynamic spatial fetching of interest rates.
-* **State Management:** Maps the user journey from initial inquiry through document collection to final approval.
+A Python demonstration of a multi-step loan inquiry: collect applicant details, call eligibility tools, request document information, and route the conversation to the next state or a human handoff.
 
-## Technical Stack
-* **Framework:** Parlant (Behavioral AI Orchestration)
-* **Environment:** Python 3.12 managed with `uv` for high-performance dependency resolution.
-* **Interface:** RESTful API integration with local server deployment.
+## Implemented flow
 
-## Architectural Impact
-This project demonstrates how to bridge the gap between "Stochastic LLMs" and "Deterministic Business Rules," providing a safe, scalable solution for regulated industries.
+1. Identify the loan type.
+2. Collect credit score, annual income, and requested amount.
+3. Evaluate a simple eligibility rule.
+4. Request document names and run simulated validation.
+5. Continue the journey or direct the user to a human specialist.
+
+## Tool boundaries
+
+| Tool | Current implementation |
+|---|---|
+| `check_eligibility` | Fixed credit-score, income, and amount thresholds |
+| `process_documents` | Checks filenames and a simulated invalid-data marker |
+| `get_current_rates` | Returns fixed example rates |
+| `get_loan_types` | Returns a static list |
+
+The tools do not contact lenders, validate document contents, retrieve live market rates, or make actual credit decisions. Framework guidelines describe intended conversational behavior; they do not establish regulatory compliance or a production safety guarantee.
+
+## Repository guide
+
+`loan_approval.py` contains the tools, domain glossary, journey state transitions, agent guidelines, and asynchronous server entry point.
+
+| Function | Responsibility |
+|---|---|
+| `add_domain_glossary` | Configure terms and support terminology |
+| `create_loan_journey` | Define transitions and tool states |
+| `main` | Start the local Parlant server and configure the agent |
+
+## Local setup
+
+The application imports `parlant.sdk` and `python-dotenv`. Create a Python environment and install compatible versions of those packages, then configure the model provider required by your Parlant installation.
+
+```bash
+git clone https://github.com/mahasmrtiadhuri/Multi-Step-Loan-Approval-Agent.git
+cd Multi-Step-Loan-Approval-Agent
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install parlant python-dotenv
+python loan_approval.py
+```
+
+Dependency versions are not locked in the current repository; SDK compatibility and provider setup need to be verified for the installed version. Use synthetic applicant data.
+
+## Next engineering work
+
+Extract pure business rules for unit testing; add journey-transition evaluation cases; lock a verified SDK version; replace simulated tools with explicit adapters; and distinguish preliminary eligibility from final human decisions throughout the conversation.
